@@ -1,0 +1,123 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.cursor-dot {
+  width: 100%;
+  height: 100%;
+  background: var(--primary-500);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.cursor-dot.pointer {
+  background: var(--accent-color, #06b6d4);
+  box-shadow: 0 0 20px var(--accent-color, #06b6d4),
+    0 0 40px rgba(6, 182, 212, 0.3);
+}
+
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-400);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Hide default cursor on interactive elements */
+body {
+  cursor: none;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+[role="button"] {
+  cursor: none;
+}
+
+/* Light theme adjustments */
+.theme-light .cursor-dot {
+  mix-blend-mode: multiply;
+  background: var(--primary-600);
+}
+
+.theme-light .cursor-trail {
+  mix-blend-mode: multiply;
+  background: var(--primary-500);
+}
+
+/* Disable on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: auto;
+  }
+}
+
+/* Disable cursor for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: auto;
+  }
+}

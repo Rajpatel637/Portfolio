@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# 🚀 Modern Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully-featured, responsive portfolio website built with React. Features dark/light themes, 3D animations, contact form, PWA support, and optimized performance.
 
-## Available Scripts
+## 🚀 Quick Start
 
-In the project directory, you can run:
+```powershell
+# Install and run
+npm install
+npm start
+```
 
-### `npm start`
+Visit `http://localhost:3000` - Your portfolio is ready!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Configuration (15 minutes)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. EmailJS Setup (Contact Form)
 
-### `npm test`
+1. Create free account at [EmailJS](https://dashboard.emailjs.com/)
+2. Add email service and create template with variables: `{{from_name}}`, `{{from_email}}`, `{{message}}`
+3. Update credentials in `src/components/Contact/Contact.js` (~line 80)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Add Your Content
 
-### `npm run build`
+Edit `src/data/portfolioData.js`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Personal info**: name, title, email, phone, bio
+- **Social links**: GitHub, LinkedIn, Twitter
+- **Projects**: title, description, technologies, images, links
+- **Skills**: frontend, backend, tools
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Add Assets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Resume: `public/assets/documents/resume.pdf`
+- Project images: `public/assets/images/projectX.jpg`
 
-### `npm run eject`
+## 📦 Commands
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Command           | Purpose                             |
+| ----------------- | ----------------------------------- |
+| `npm start`       | Development server (localhost:3000) |
+| `npm run build`   | Production build                    |
+| `npm test`        | Run tests                           |
+| `npm run analyze` | Analyze bundle size                 |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚢 Deploy (Choose One)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Vercel** (Recommended)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```powershell
+npm install -g vercel
+vercel
+```
 
-## Learn More
+**Netlify**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Push to GitHub
+2. Connect at [Netlify](https://app.netlify.com/)
+3. Build: `npm run build`, Publish: `build`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**GitHub Pages**
 
-### Code Splitting
+```powershell
+npm install --save-dev gh-pages
+# Add to package.json: "homepage": "https://yourusername.github.io/portfolio"
+npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎨 Customization
 
-### Analyzing the Bundle Size
+**Theme Colors**: Edit `src/contexts/ThemeContext.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+const lightTheme = {
+  background: "#ffffff",
+  text: "#1a1a1a",
+  primary: "#007bff",
+};
+const darkTheme = {
+  background: "#0a0a0a",
+  text: "#ffffff",
+  primary: "#00d4ff",
+};
+```
 
-### Making a Progressive Web App
+**Analytics**: Add GA4 ID in `src/utils/analytics.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔧 Tech Stack
 
-### Advanced Configuration
+React 19 • Three.js • Framer Motion • EmailJS • React Router • Styled Components • PWA • Jest
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📁 Structure
 
-### Deployment
+```
+src/
+├── components/        # UI components (Hero, About, Projects, Contact, etc.)
+├── contexts/          # ThemeContext, ToastContext
+├── data/             # portfolioData.js (all content)
+├── utils/            # Analytics, optimization utilities
+└── App.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+public/
+└── assets/
+    ├── documents/    # resume.pdf
+    └── images/       # project images
+```
 
-### `npm run build` fails to minify
+## 🐛 Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Contact form not working?** Verify EmailJS credentials in `Contact.js`
+
+**Build fails?** Clear cache: `rm -rf node_modules package-lock.json; npm install`
+
+**Theme not saving?** Enable browser localStorage
+
+**Images not loading?** Use paths like `/assets/images/project1.jpg`
+
+---
+
+**License**: MIT | **Made with** ❤️ | [GitHub](https://github.com/yourusername) • [LinkedIn](https://linkedin.com/in/yourusername)

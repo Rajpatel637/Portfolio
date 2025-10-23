@@ -1,0 +1,137 @@
+.particle-system {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle-canvas {
+  display: block;
+  background: transparent;
+}
+
+.with-particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Performance indicator (development only) */
+.performance-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.performance-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  min-width: 100px;
+}
+
+.performance-badge.normal-mode {
+  background: rgba(16, 185, 129, 0.8);
+}
+
+.performance-badge.performance-mode {
+  background: rgba(245, 158, 11, 0.8);
+}
+
+.particle-count {
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Particle system container variants */
+.particle-system.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.particle-system.section-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.particle-system.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
+
+/* Theme-specific adjustments */
+.theme-light .particle-system {
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.theme-dark .particle-system {
+  filter: brightness(0.9) contrast(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .performance-indicator {
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+  }
+
+  .performance-badge,
+  .particle-count {
+    padding: 0.2rem 0.4rem;
+    min-width: 80px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .particle-system {
+    display: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .particle-system {
+    opacity: 0.3;
+  }
+}
+
+/* Power saving mode */
+@media (prefers-reduced-motion: reduce) {
+  .particle-system .particle-canvas {
+    animation-play-state: paused;
+  }
+}
+
+/* Print styles */
+@media print {
+  .particle-system {
+    display: none;
+  }
+}
