@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { 
   WebGLRenderer, Scene, PerspectiveCamera, 
   BufferGeometry, BufferAttribute, ShaderMaterial, Points,
@@ -91,6 +91,19 @@ export default function Hero() {
   const cameraRef  = useRef(null);
   const secRef     = useRef(null);
   const scrollTextRef = useRef(null);
+
+  const roles = ["Software Engineer", "Full-Stack Developer", "AI & ML Practitioner"];
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const roleInterval = setInterval(() => {
+      gsap.to('.role-text', { opacity: 0, duration: 0.4, onComplete: () => {
+        setRoleIndex(i => (i + 1) % roles.length);
+        gsap.to('.role-text', { opacity: 1, duration: 0.4 });
+      }});
+    }, 3000);
+    return () => clearInterval(roleInterval);
+  }, []);
 
   /* ── Three.js GPU particle field ── */
   useEffect(() => {
@@ -371,6 +384,7 @@ export default function Hero() {
     <section id="home" ref={secRef} style={{
       padding: 0, height: '100svh', // mobile dynamic viewport height fix
       position: 'relative', overflow: 'hidden',
+      background: 'radial-gradient(ellipse 80% 60% at 50% 0%, var(--glow) 0%, transparent 70%)',
     }}>
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, zIndex: 0, willChange: 'transform' }} />
 
@@ -402,7 +416,7 @@ export default function Hero() {
           fontSize: 'clamp(1.1rem, 2.2vw, 1.8rem)',
           color: 'var(--white)', opacity: 0, marginBottom: '0.6rem',
         }}>
-          {DATA.role}
+          <span className="role-text" style={{ display: 'inline-block' }}>{roles[roleIndex]}</span>
         </p>
 
         <p ref={tagRef} style={{

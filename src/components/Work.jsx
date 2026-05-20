@@ -166,6 +166,7 @@ function ProjectCard({ project, index }) {
       display: 'flex', flexDirection: 'column',
       transition: 'box-shadow 0.4s, border-color 0.4s',
       transformStyle: 'preserve-3d',
+      perspective: '1000px',
       willChange: 'transform',
       '--card-color': project.color,
     }}>

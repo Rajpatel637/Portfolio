@@ -159,7 +159,7 @@ function Loader({ onDone }) {
           ".loader-p-char",
           {
             textShadow:
-              "0 0 80px rgba(198,255,0,0.9), 0 0 20px rgba(198,255,0,0.5)",
+              "0 0 80px var(--glow), 0 0 20px var(--glow)",
             repeat: -1,
             yoyo: true,
             duration: 1.1,
@@ -278,7 +278,7 @@ function Loader({ onDone }) {
               style={{
                 display: "inline-block",
                 color: i === 0 ? "var(--white)" : "var(--accent)",
-                textShadow: i === 1 ? "0 0 60px rgba(198,255,0,0.45)" : "none",
+                textShadow: i === 1 ? "0 0 60px var(--glow)" : "none",
               }}
             >
               {c}
@@ -297,7 +297,7 @@ function Loader({ onDone }) {
           height: "1px",
           transform: "translateY(-0.5px)",
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(198,255,0,0.3) 50%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, var(--glow) 50%, transparent 100%)",
         }}
       />
 
